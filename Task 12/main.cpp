@@ -1,34 +1,17 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include "main.h"
 
-using namespace std;
+int main() {}
 
-int main() {
-    vector<int> list;
-    int input{ 0 };
-
-    cout << "Enter a sequence of integers ending with 0: " << endl;
-
-    do {
-        if (input != 0) list.push_back(input);
-        if (!cin) {
-            input = 1;
-            continue;
+template <typename T>
+void bubbleSort(T* list, int size) {
+    bool flag = true;
+    while (flag) {
+        flag = false;
+        for (int i = 0; i < size - 1; i++) {
+            if (list[i] > list[i + 1]) {
+                swap(list[i], list[i + 1]);
+                flag = true;
+            }
         }
-        cin >> input;
-    } while (input != 0);
-
-    if (list.empty()) {
-        cout << "Your sequence is empty. Terminating...";
-        return -1;
     }
-
-    cout << "Here is your sequence before sorting: " << endl;
-    for (int i : list) cout << i << " ";
-
-    sort(list.begin(), list.end());
-
-    cout << "Here is your sorted sequence: " << endl;
-    for (int i : list) cout << i << " ";
 }
